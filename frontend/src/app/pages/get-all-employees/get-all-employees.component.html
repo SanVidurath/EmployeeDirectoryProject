@@ -1,0 +1,19 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Department</th>
+        <th scope="col">Registered On</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let employee of listOfEmployees">
+      <tr>
+        <td scope="row">{{employee.id}}</td>
+        <td>{{employee.name}}</td>
+        <td>{{employee.department}}</td>
+        <td>{{employee.createdAt}}</td>
+      </tr>
+    </tbody>
+  </table>
+  
