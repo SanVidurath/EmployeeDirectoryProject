@@ -41,4 +41,10 @@ export class EmployeeService {
       `${this.baseUrl}/search-by-department/${department}`
     );
   }
+
+  updateEmployee(employeeData: any) {
+    return this.http.put(`${this.baseUrl}/update`, employeeData, {
+      responseType: 'text',
+    });
+  }
 }

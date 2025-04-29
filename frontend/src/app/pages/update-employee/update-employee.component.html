@@ -7,13 +7,13 @@
         >
           <div class="card-body p-4 p-md-5 rounded-4">
             <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 text-center text-white">
-              Update Customer
+              Update Employee
             </h3>
             <form>
               <div class="row mb-4">
                 <select #searchType class="form-select" (change)="onSelected(searchType.value)">
                   <option value="" disabled selected>Id</option>
-                  <option *ngFor="let customer of listOfCustomers" value="{{customer.id}}">{{customer.id}}</option>
+                  <option *ngFor="let employee of listOfEmployees" value="{{employee.id}}">{{employee.id}}</option>
                 </select>
               </div>
               <div class="row mb-4">
@@ -24,23 +24,23 @@
                     class="form-control form-control-lg w-100 mb-3"
                     placeholder="Name"
                     autocomplete="off"
-                    value="{{customer?.name}}"
+                    value="{{employee?.name}}"
                   />
                   <input
                     type="text"
-                    id="address"
+                    id="email"
                     class="form-control form-control-lg w-100 mb-3"
-                    placeholder="Address"
+                    placeholder="Email"
                     autocomplete="off"
-                    value="{{customer?.address}}"
+                    value="{{employee?.email}}"
                   />
                   <input
                     type="text"
-                    id="salary"
+                    id="department"
                     class="form-control form-control-lg w-100"
-                    placeholder="Salary"
+                    placeholder="Department"
                     autocomplete="off"
-                    value="{{customer?.salary}}"
+                    value="{{employee?.department}}"
                   />
                 </div>
               </div>

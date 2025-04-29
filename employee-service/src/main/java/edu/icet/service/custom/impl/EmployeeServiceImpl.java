@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,8 +27,16 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public void updateCustomer(Employee employee) {
-        
+    public void updateEmployee(Employee employee) {
+        EmployeeEntity existing = employeeRepository.findById(employee.getId())
+                .orElseThrow(() -> new RuntimeException("Employee not found"));
+
+        existing.setName(employee.getName());
+        existing.setEmail(employee.getEmail());
+        existing.setDepartment(employee.getDepartment());
+        existing.setUpdatedAt(LocalDateTime.now());
+
+        employeeRepository.save(existing);
     }
 
     @Override

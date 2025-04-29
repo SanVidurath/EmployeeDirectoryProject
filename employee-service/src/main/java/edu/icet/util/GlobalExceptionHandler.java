@@ -44,6 +44,8 @@ public class GlobalExceptionHandler {
 
         if (message.contains("Duplicate entry")) {
             errors.put(ERROR, "email already exists");
+        } else if (message.contains("duplicate key") || message.contains("violates unique constraint")) {
+            errors.put(ERROR, "Employee with this ID or email already exists");
         } else {
             errors.put(ERROR, "Data integrity violation");
         }

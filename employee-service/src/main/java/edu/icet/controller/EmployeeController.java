@@ -29,11 +29,11 @@ public class EmployeeController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
-    @PutMapping("/update-customer")
+    @PutMapping("/update")
     public ResponseEntity<Map<String, String>> updateCustomer(@Valid @RequestBody Employee employee){
-        employeeService.updateCustomer(employee);
+        employeeService.updateEmployee(employee);
         Map<String, String> response = new HashMap<>();
-        response.put("message","Customer updated successfully");
+        response.put("message","employee updated successfully");
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 

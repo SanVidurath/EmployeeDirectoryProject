@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface EmployeeService {
     void register(Employee employee);
-    void updateCustomer(Employee employee);
+    void updateEmployee(Employee employee);
     List<Employee> getAll();
     Employee searchEmployeeById(Integer id);
     List<Employee> searchEmployeeByName(String name);
