@@ -21,4 +21,24 @@ export class EmployeeService {
       responseType: 'text',
     });
   }
+
+  searchById(id: number): Observable<Employee> {
+    return this.http.get<Employee>(`${this.baseUrl}/search-by-id/${id}`);
+  }
+
+  searchByName(name: string): Observable<Employee[]> {
+    return this.http.get<Employee[]>(`${this.baseUrl}/search-by-name/${name}`);
+  }
+
+  searchByEmail(email: string): Observable<Employee[]> {
+    return this.http.get<Employee[]>(
+      `${this.baseUrl}/search-by-email/${email}`
+    );
+  }
+
+  searchByDepartment(department: string): Observable<Employee[]> {
+    return this.http.get<Employee[]>(
+      `${this.baseUrl}/search-by-department/${department}`
+    );
+  }
 }

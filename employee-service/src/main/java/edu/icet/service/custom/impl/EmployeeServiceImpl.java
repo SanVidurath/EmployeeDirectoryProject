@@ -4,6 +4,7 @@ import edu.icet.dto.Employee;
 import edu.icet.entity.EmployeeEntity;
 import edu.icet.repository.custom.EmployeeRepository;
 import edu.icet.service.custom.EmployeeService;
+import edu.icet.util.DepartmentType;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -25,6 +26,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
+    public void updateCustomer(Employee employee) {
+        
+    }
+
+    @Override
     public List<Employee> getAll() {
         ArrayList<Employee> employeeList = new ArrayList<>();
         List<EmployeeEntity> employeeEntityList = employeeRepository.findAll();
@@ -32,6 +38,38 @@ public class EmployeeServiceImpl implements EmployeeService {
         employeeEntityList.forEach(employeeEntity ->
                 employeeList.add(modelMapper.map(employeeEntity, Employee.class)));
 
+        return employeeList;
+    }
+
+    @Override
+    public Employee searchEmployeeById(Integer id) {
+        return modelMapper.map(employeeRepository.findById(id), Employee.class);
+    }
+
+    @Override
+    public List<Employee> searchEmployeeByName(String name) {
+        List<EmployeeEntity> employeeEntityList = employeeRepository.findByName(name);
+        List<Employee> employeeList = new ArrayList<>();
+
+        employeeEntityList.forEach(employeeEntity -> employeeList.add(modelMapper.map(employeeEntity, Employee.class)));
+        return employeeList;
+    }
+
+    @Override
+    public List<Employee> searchEmployeeByEmail(String email) {
+        List<EmployeeEntity> employeeEntityList = employeeRepository.findByEmail(email);
+        ArrayList<Employee> employeeList = new ArrayList<>();
+
+        employeeEntityList.forEach(employeeEntity -> employeeList.add(modelMapper.map(employeeEntity, Employee.class)));
+        return employeeList;
+    }
+
+    @Override
+    public List<Employee> searchEmployeeByDepartment(DepartmentType department) {
+        List<EmployeeEntity> employeeEntityList = employeeRepository.findByDepartment(department);
+        ArrayList<Employee> employeeList = new ArrayList<>();
+
+        employeeEntityList.forEach(employeeEntity -> employeeList.add(modelMapper.map(employeeEntity, Employee.class)));
         return employeeList;
     }
 }

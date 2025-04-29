@@ -21,39 +21,58 @@ export class SearchEmployeeComponent {
     if (!this.searchValue) return;
 
     switch (this.searchType) {
-      // case 'id':
-      //   this.customerService
-      //     .searchCustomerById(this.searchValue)
-      //     .subscribe((res) => {
-      //       res!==null?this.customers.push(res):this.customers=[];
-      //       ;
-      //     });
+      case 'id':
+        this.employeeService
+          .searchById(this.searchValue)
+          .subscribe({
+            next: (res) => {
+              res !== null ? this.employees.push(res) : this.employees = [];
+            },
+            error: (err) => {
+              this.employees.length=0;
+            }
+          });
 
-      //   break;
-      // case 'name':
-      //   this.customerService
-      //     .searchCustomerByName(this.searchValue)
-      //     .subscribe((res) => {
-      //       this.customers = res;
-      //     });
+        break;
+      case 'name':
+        this.employeeService
+          .searchByName(this.searchValue)
+          .subscribe({
+            next: (res) => {
+              this.employees=res;
+            },
+            error: (err) => {
+              this.employees.length=0;
+            }
+          });
 
-      //   break;
-      // case 'address':
-      //   this.customerService
-      //     .searchCustomerByAddress(this.searchValue)
-      //     .subscribe((res) => {
-      //       this.customers = res;
-      //     });
+        break;
+      case 'email':
+        this.employeeService
+          .searchByEmail(this.searchValue)
+          .subscribe( {
+            next: (res) => {
+              this.employees=res;
+            },
+            error: (err) => {
+              this.employees.length=0;
+            }
+          });
 
-      //   break;
-      // case 'salary':
-      //   this.customerService
-      //     .searchCustomerBySalary(this.searchValue)
-      //     .subscribe((res) => {
-      //       this.customers = res;
-      //     });
+        break;
+      case 'department':
+        this.employeeService
+          .searchByDepartment(this.searchValue)
+          .subscribe({
+            next: (res) => {
+              this.employees=res;
+            },
+            error: (err) => {
+              this.employees.length=0;
+            }
+          });
 
-      //   break;
+        break;
     }
   }
 }
