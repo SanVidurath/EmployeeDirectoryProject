@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -25,5 +26,10 @@ public class EmployeeController {
         Map<String, String> response = new HashMap<>();
         response.put("message", "employee registered successfully");
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
+    @GetMapping(value = "/all", produces = "application/json")
+    public List<Employee> getData() {
+        return employeeService.getAll();
     }
 }
