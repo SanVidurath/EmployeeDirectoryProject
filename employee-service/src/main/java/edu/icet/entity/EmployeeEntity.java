@@ -9,7 +9,7 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import java.time.Instant;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -32,9 +32,11 @@ public class EmployeeEntity {
     @Enumerated(EnumType.STRING)
     private DepartmentType department;
 
+    @Column(nullable = false)
     @CreationTimestamp
-    private Instant createdAt;
+    private LocalDateTime createdAt;
 
+    @Column(nullable = false)
     @UpdateTimestamp
-    private Instant updatedAt;
+    private LocalDateTime updatedAt;
 }
