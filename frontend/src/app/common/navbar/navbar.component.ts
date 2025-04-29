@@ -9,7 +9,6 @@ import { RouterModule, Router, NavigationEnd } from '@angular/router';
 })
 export class NavbarComponent implements AfterViewInit{
   constructor(private router: Router, private renderer: Renderer2) {
-    // Listen to router events to detect navigation changes
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.updateActiveLink();

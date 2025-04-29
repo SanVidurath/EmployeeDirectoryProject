@@ -1,7 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { EmployeeService } from '../../service/EmployeeService';
 import { Employee } from '../../models/Employee';
 
@@ -13,8 +11,7 @@ import { Employee } from '../../models/Employee';
 })
 export class GetAllEmployeesComponent implements OnInit{
   constructor(
-    private http:HttpClient,
-    private employeeServie:EmployeeService
+    private employeeService:EmployeeService
   ){}
 
   ngOnInit(): void {
@@ -24,7 +21,7 @@ export class GetAllEmployeesComponent implements OnInit{
   listOfEmployees:Employee[]=[];
 
   getEmployeeData() {
-    this.employeeServie.loadEmployeeData().subscribe((res) => {
+    this.employeeService.getAll().subscribe((res) => {
       this.listOfEmployees = res;
     });
   }

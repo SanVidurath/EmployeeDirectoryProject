@@ -18,7 +18,7 @@ export class UpdateEmployeeComponent implements OnInit {
   constructor(private employeeService: EmployeeService) {}
 
   ngOnInit(): void {
-    this.employeeService.loadEmployeeData().subscribe((res) => {
+    this.employeeService.getAll().subscribe((res) => {
       this.listOfEmployees = res;
     });
   }
@@ -51,7 +51,7 @@ export class UpdateEmployeeComponent implements OnInit {
 
     const employeeData = { id, name, email, department };
 
-    this.employeeService.updateEmployee(employeeData).subscribe({
+    this.employeeService.update(employeeData).subscribe({
       next: () => {
         Swal.fire('Success', 'Employee updated successfully!', 'success');
       },

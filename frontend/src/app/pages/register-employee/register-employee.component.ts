@@ -29,7 +29,7 @@ export class RegisterEmployeeComponent {
 
     this.employeeService.register(employeeData).subscribe({
       next: () => {
-        Swal.fire('Success', 'Employee added successfully!', 'success');
+        Swal.fire('Success', 'Employee registered successfully!', 'success');
       },
       error: (err) => {
         if (err.status === 400 && err.error) {

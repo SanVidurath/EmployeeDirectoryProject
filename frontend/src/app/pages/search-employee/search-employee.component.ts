@@ -62,7 +62,7 @@ export class SearchEmployeeComponent {
         break;
       case 'department':
         this.employeeService
-          .searchByDepartment(this.searchValue)
+          .searchByDepartment(this.searchValue.toUpperCase())
           .subscribe({
             next: (res) => {
               this.employees=res;

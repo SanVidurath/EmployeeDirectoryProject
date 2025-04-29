@@ -12,7 +12,7 @@ export class EmployeeService {
 
   constructor(private http: HttpClient) {}
 
-  loadEmployeeData(): Observable<Employee[]> {
+  getAll(): Observable<Employee[]> {
     return this.http.get<Employee[]>(`${this.baseUrl}/all`);
   }
 
@@ -42,7 +42,7 @@ export class EmployeeService {
     );
   }
 
-  updateEmployee(employeeData: any) {
+  update(employeeData: any) {
     return this.http.put(`${this.baseUrl}/update`, employeeData, {
       responseType: 'text',
     });
